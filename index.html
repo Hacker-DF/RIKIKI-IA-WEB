@@ -1,62 +1,41 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Web Dev Chatbot</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RIKIKI IA WEB</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
+  <body>
+    <div class="chat-container">
+      <h1>💬 AI Web Dev Chatbot</h1>
+      <div id="chatBox" class="chat-box" aria-live="polite"></div>
 
-<body>
-  <div class="chat-container">
-    <h1>💬 AI Web Dev Chatbot</h1>
-    <div id="chatBox" class="chat-box"></div>
-    
-    <div class="input-group">
-      <textarea id="userInput" placeholder="Ask anything"></textarea>
-      <button onclick="sendMessage()">➤</button>
-      <button onclick="startVoice()">🎙</button>
+      <div class="input-group">
+        <textarea
+          id="userInput"
+          name="userInput"
+          placeholder="Ask anything"
+          aria-label="User input"
+        ></textarea>
+        <button onclick="sendMessage()" aria-label="Send message">➤</button>
+        <button onclick="startVoice()" aria-label="Start voice input">🎙</button>
+      </div>
+
+      <div style="text-align: center; margin-top: 15px">
+        <button onclick="copySiteLink()" aria-label="Copy site link">
+          🔗 Copy Site Link
+        </button>
+      </div>
     </div>
-  </div>
-  
-  <!-- JSZip & FileSaver for optional zip download later -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-  
-  <script src="script.js"></script>
-</body>
 
-=======
-<!DOCTYPE html>
-<html lang="en">
+    <footer style="text-align: center; margin-top: 20px; color: #888">
+      Powered by Gemini API • Hacker-DF © 2025
+    </footer>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RIKIKI IA WEB</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
-  <div class="chat-container">
-    <h1>💬 AI Web Dev Chatbot</h1>
-    <div id="chatBox" class="chat-box"></div>
-    
-    <div class="input-group">
-      <textarea id="userInput" placeholder="Ask anything"></textarea>
-      <button onclick="sendMessage()">➤</button>
-      <button onclick="startVoice()">🎙</button>
-    </div>
-  </div>
-  
-  <!-- JSZip & FileSaver for optional zip download later -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-  
-  <script src="script.js"></script>
-</body>
-
->>>>>>> 5a7adb9 (Déploiement initial du site)
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>

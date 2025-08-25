@@ -1,8 +1,9 @@
+/* === Base === */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #1e1e1e;
+  background-color: #1e1e1e;
   color: #fff;
   display: flex;
   justify-content: center;
@@ -10,20 +11,23 @@ body {
   min-height: 100vh;
 }
 
+/* === Container === */
 .chat-container {
   width: 100%;
   max-width: 700px;
   padding: 20px;
 }
 
+/* === Title === */
 h1 {
   text-align: center;
   color: #00ffd0;
   margin-bottom: 10px;
 }
 
+/* === Chat Box === */
 .chat-box {
-  background: #2e2e2e;
+  background-color: #2e2e2e;
   padding: 20px;
   border-radius: 10px;
   height: 500px;
@@ -31,9 +35,11 @@ h1 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
+/* === Messages === */
 .message {
   margin-bottom: 20px;
   line-height: 1.5;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .user {
@@ -46,8 +52,14 @@ h1 {
   color: #eee;
 }
 
+.error {
+  color: #ff4d4d;
+  font-weight: bold;
+}
+
+/* === Code Blocks === */
 pre {
-  background: #111;
+  background-color: #111;
   padding: 10px;
   border-radius: 6px;
   overflow-x: auto;
@@ -57,6 +69,7 @@ pre {
   margin-top: 10px;
 }
 
+/* === Input Group === */
 .input-group {
   display: flex;
   gap: 10px;
@@ -68,23 +81,65 @@ textarea {
   padding: 12px;
   border-radius: 8px;
   border: none;
-  background: #2e2e2e;
+  background-color: #2e2e2e;
   color: #fff;
   font-size: 16px;
   resize: none;
   height: 60px;
+  transition: box-shadow 0.3s ease;
 }
 
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #00ffd0;
+}
+
+/* === Buttons === */
 button {
-  background: #00ffd0;
+  background-color: #00ffd0;
   border: none;
   border-radius: 8px;
   padding: 0 20px;
   font-size: 24px;
   color: #000;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background: #00c9a7;
+  background-color: #00c9a7;
+}
+
+button:focus {
+  outline: 2px solid #00ffd0;
+  outline-offset: 2px;
+}
+
+/* === Animation === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+}
+  to {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+/* === Responsive === */
+@media (max-width: 500px) {
+.chat-container {
+    padding: 10px;
+}
+
+  textarea {
+    font-size: 14px;
+    height: 50px;
+}
+
+  button {
+    font-size: 20px;
+    padding: 0 15px;
+}
 }
