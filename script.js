@@ -77,3 +77,4 @@ function startVoice() {
     alert("Voice input error: " + event.error);
   };
 }
+
