@@ -3,32 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chatbot Développeur Web IA</title>
+  <title>Chatbot IA Web Dev</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="chat-container">
     <header>
-      <h1>💬 Chatbot Développeur Web IA</h1>
+      <h1>💬 Chatbot IA Web Dev</h1>
+      <button id="toggleTheme" title="Changer de thème">🌓</button>
     </header>
 
     <section id="chatBox" class="chat-box" aria-live="polite"></section>
 
     <section class="input-group">
-      <label for="userInput" class="visually-hidden">Votre message</label>
-      <textarea id="userInput" placeholder="Posez votre question ici..." rows="3"></textarea>
-      <div class="button-group">
-        <button type="button" onclick="sendMessage()" aria-label="Envoyer le message">➤</button>
-        <button type="button" onclick="startVoice()" aria-label="Démarrer la voix">🎙</button>
-      </div>
+      <textarea id="userInput" placeholder="Posez votre question ici..." rows="2"></textarea>
+      <button onclick="sendMessage()" title="Envoyer">➤</button>
+      <button onclick="startVoice()" title="Parler">🎙</button>
+      <button onclick="downloadChat()" title="Sauvegarder">📥</button>
     </section>
   </main>
 
-  <!-- Librairies externes -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-
-  <!-- Script principal -->
   <script src="script.js"></script>
 </body>
 </html>
