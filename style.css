@@ -8,6 +8,12 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.light {
+  background: #f5f5f5;
+  color: #222;
 }
 
 .chat-container {
@@ -16,10 +22,23 @@ body {
   padding: 20px;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 h1 {
-  text-align: center;
   color: #00ffd0;
-  margin-bottom: 10px;
+  margin: 0;
+}
+
+#toggleTheme {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: inherit;
 }
 
 .chat-box {
@@ -28,12 +47,18 @@ h1 {
   border-radius: 10px;
   height: 500px;
   overflow-y: auto;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  margin-top: 10px;
+}
+
+body.light .chat-box {
+  background: #fff;
+  color: #000;
 }
 
 .message {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   line-height: 1.5;
+  animation: fadeIn 0.3s ease-in;
 }
 
 .user {
@@ -61,6 +86,7 @@ pre {
   display: flex;
   gap: 10px;
   margin-top: 10px;
+  flex-wrap: wrap;
 }
 
 textarea {
@@ -72,19 +98,29 @@ textarea {
   color: #fff;
   font-size: 16px;
   resize: none;
-  height: 60px;
+}
+
+body.light textarea {
+  background: #e0e0e0;
+  color: #000;
 }
 
 button {
   background: #00ffd0;
   border: none;
   border-radius: 8px;
-  padding: 0 20px;
-  font-size: 24px;
+  padding: 0 16px;
+  font-size: 20px;
   color: #000;
   cursor: pointer;
+  transition: background 0.2s;
 }
 
 button:hover {
   background: #00c9a7;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
