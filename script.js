@@ -1,4 +1,4 @@
-const API_KEY = "TON_API_KEY_ICI";
+const API_KEY = "AIzaSyDSIy5m7mTXlMMR_OOdCu2Af_EwoCd124w";
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
 const chatBox = document.getElementById("chatBox");
@@ -86,3 +86,4 @@ function downloadChat() {
 document.getElementById("toggleTheme").addEventListener("click", () => {
   document.body.classList.toggle("light");
 });
+
