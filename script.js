@@ -1,4 +1,4 @@
-const API_KEY = "AIzaSyDSIy5m7mTXlMMR_OOdCu2Af_EwoCd124w"; // Remplace par ta vraie clé API
+const API_KEY = "TON_API_KEY_ICI";
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
 const chatBox = document.getElementById("chatBox");
@@ -15,15 +15,10 @@ function sendMessage() {
 
 function addMessage(sender, text) {
   const msg = document.createElement("div");
-  msg.className = `message ${sender}`; // ✅ Corrigé : syntaxe correcte pour className
-
-  if (sender === "bot" && text.includes("```")) {
-    const parsed = parseCode(text);
-    msg.innerHTML = parsed;
-  } else {
-    msg.innerText = text;
-  }
-
+  msg.className = `message ${sender}`;
+  msg.innerHTML = sender === "bot" && text.includes("```")
+    ? parseCode(text)
+    : text;
   chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
 }
@@ -35,16 +30,15 @@ function parseCode(text) {
 }
 
 function escapeHtml(str) {
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
+  return str.replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
 }
 
 async function getBotResponse(prompt) {
   const thinking = document.createElement("div");
   thinking.className = "message bot";
-  thinking.innerText = "⏳ Réponse en cours...";
+  thinking.innerText = "⏳ Réflexion...";
   chatBox.appendChild(thinking);
   chatBox.scrollTop = chatBox.scrollHeight;
 
@@ -52,9 +46,7 @@ async function getBotResponse(prompt) {
     const res = await fetch(API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }]
-      })
+      body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
     });
 
     const data = await res.json();
@@ -63,22 +55,34 @@ async function getBotResponse(prompt) {
     addMessage("bot", aiText);
   } catch (err) {
     thinking.remove();
-    addMessage("bot", "⚠️ Erreur lors de la récupération de la réponse.");
+    addMessage("bot", "⚠️ Erreur de connexion.");
     console.error(err);
   }
 }
 
-// 🎙️ Reconnaissance vocale
 function startVoice() {
   const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
   recognition.lang = "fr-FR";
   recognition.start();
-
   recognition.onresult = (event) => {
     document.getElementById("userInput").value = event.results[0][0].transcript;
   };
-
   recognition.onerror = (event) => {
-    alert("Erreur de reconnaissance vocale : " + event.error);
+    alert("Erreur vocale : " + event.error);
   };
 }
+
+function downloadChat() {
+  const messages = document.querySelectorAll(".message");
+  let chatContent = "";
+  messages.forEach(msg => {
+    chatContent += msg.textContent + "\n";
+  });
+
+  const blob = new Blob([chatContent], { type: "text/plain;charset=utf-8" });
+  saveAs(blob, "conversation_chatbot.txt");
+}
+
+document.getElementById("toggleTheme").addEventListener("click", () => {
+  document.body.classList.toggle("light");
+});
